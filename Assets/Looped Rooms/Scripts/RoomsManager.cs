@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace Bipolar.LoopedRooms
@@ -22,12 +23,12 @@ namespace Bipolar.LoopedRooms
         [SerializeField, ReadOnly]
         private Room currentRoom;
         [SerializeField, ReadOnly]
-        private Room nearestNeighbour;
+        private Room nearestNeighbour = null;
         [SerializeField, ReadOnly]
         private List<Room> activeRooms;
 
         private readonly Dictionary<DoorID, DoorID> doorMappings = new Dictionary<DoorID, DoorID>();
-        private readonly Dictionary<DoorID, Room> roomsByDoorID = new Dictionary<DoorID, Room>();
+        private readonly Dictionary<DoorID, Room> roomPrototypesByDoorID = new Dictionary<DoorID, Room>();
 
         private void Awake()
         {
@@ -37,27 +38,54 @@ namespace Bipolar.LoopedRooms
             activeRooms.Add(room);
             currentRoom = room;
 
-            CreateMissingNeighbours(room);
+            LoadMissingNeighbours(room);
         }
 
-        private void CreateMissingNeighbours(Room room)
+        private void LoadMappings()
         {
-            foreach (var door in room.Doors)
+            foreach (var doorPair in settings.DoorMappings)
             {
-                if (room.connectedRooms.ContainsKey(door))
+                doorMappings.Add(doorPair.Door1, doorPair.Door2);
+                doorMappings.Add(doorPair.Door2, doorPair.Door1);
+            }
+
+            foreach (var roomPrototype in settings.AllRoomsPrototypes)
+            {
+                var roomDoors = roomPrototype.Doors;
+                foreach (var door in roomDoors)
+                    if (door)
+                        roomPrototypesByDoorID.Add(door.Id, roomPrototype);
+            }
+        }
+
+        private void LoadMissingNeighbours(Room room)
+        {
+            var doors = room.Doors;
+            LoadNeighbours(room, doors);
+        }
+
+        private void LoadNeighbours(Room room, IReadOnlyList<Door> doors)
+        {
+            foreach (var door in doors)
+            {
+                if (door == null)
+                    continue;
+
+                if (room.connections.ContainsKey(door))
                     continue;
 
                 var neighbour = CreateRoomBehindDoor(door);
                 activeRooms.Add(neighbour.room);
 
-                room.connectedRooms[door] = neighbour.room;
-                neighbour.room.connectedRooms[neighbour.door] = room;
+                room.connections[door] = new Room.Connection(neighbour.door, neighbour.room);
+                neighbour.room.connections[neighbour.door] = new Room.Connection(door, room);
             }
         }
 
         private (Room room, Door door) CreateRoomBehindDoor(Door door)
         {
-            var roomPrototype = roomsByDoorID[door.Id];
+            var otherDoorId = doorMappings[door.Id];
+            var roomPrototype = roomPrototypesByDoorID[otherDoorId];
             var room = roomsSpawner.GetRoom(roomPrototype);
             var otherDoorID = doorMappings[door.Id];
             var otherDoor = room.GetDoor(otherDoorID);
@@ -77,7 +105,7 @@ namespace Bipolar.LoopedRooms
         {
             activeRooms.Sort(RoomsToObserverDistanceComparison);
             UpdateCurrentRoom();
-            nearestNeighbour = activeRooms[1];
+            UpdateNearestNeighbour();
         }
 
         private void UpdateCurrentRoom()
@@ -87,6 +115,7 @@ namespace Bipolar.LoopedRooms
                 return;
 
             var previousRoom = currentRoom;
+
             currentRoom = nearestRoom;
 
             DeleteAllConnectionsExceptOne(previousRoom, currentRoom);
@@ -102,7 +131,33 @@ namespace Bipolar.LoopedRooms
                 activeRooms.RemoveAt(i);
             }
 
-            CreateMissingNeighbours(currentRoom);
+            LoadMissingNeighbours(currentRoom);
+        }
+
+        private void UpdateNearestNeighbour()
+        {
+            if (nearestNeighbour == activeRooms[1])
+                return;
+            
+            if (nearestNeighbour != null && nearestNeighbour != currentRoom)
+            {
+                foreach (var connection in nearestNeighbour.connections.Values)
+                {
+                    if (connection.room == currentRoom)
+                        continue;
+
+                    activeRooms.Remove(connection.room);
+                    roomsSpawner.Release(connection.room);
+                }
+                DeleteAllConnectionsExceptOne(nearestNeighbour, currentRoom);
+            }
+
+            nearestNeighbour = activeRooms[1];
+
+            var connectionToCurrentRoom = nearestNeighbour.connections.First(kvp => kvp.Value.room == currentRoom);
+            var oppositeDoors = nearestNeighbour.GetOppositeDoors(connectionToCurrentRoom.Key);
+
+            LoadNeighbours(nearestNeighbour, oppositeDoors);
         }
 
         private int RoomsToObserverDistanceComparison(Room lhs, Room rhs)
@@ -114,27 +169,11 @@ namespace Bipolar.LoopedRooms
 
         private void DeleteAllConnectionsExceptOne(Room room, Room exception)
         {
-            var door = room.connectedRooms.First(kvp => kvp.Value == exception).Key;
-            room.connectedRooms.Clear();
-            room.connectedRooms.Add(door, exception);
+            var door = room.connections.First(kvp => kvp.Value.room == exception).Key;
+            var exceptionConnection = room.connections[door];
+            room.connections.Clear();
+            room.connections.Add(door, exceptionConnection);
         }
 
-        private void LoadMappings()
-        {
-            foreach (var doorPair in settings.DoorMappings)
-            {
-                doorMappings.Add(doorPair.Door1, doorPair.Door2);
-                doorMappings.Add(doorPair.Door2, doorPair.Door1);
-            }
-
-            foreach (var room in settings.AllRoomsPrototypes)
-            {
-                var roomDoors = room.Doors;
-                foreach (var door in roomDoors)
-                {
-                    roomsByDoorID.Add(door.Id, room);
-                }
-            }
-        }
     }
 }
