@@ -3,8 +3,11 @@ using UnityEngine;
 
 namespace Bipolar.LoopedRooms
 {
+
     public class Room : MonoBehaviour
     {
+        public event System.Action OnRoomInited;
+
         public struct Connection
         {
             public Door door;
@@ -41,6 +44,7 @@ namespace Bipolar.LoopedRooms
         public void Init(Room prototype)
         {
             this.prototype = prototype;
+            OnRoomInited?.Invoke();
         }
 
         private void PopulateDoors()

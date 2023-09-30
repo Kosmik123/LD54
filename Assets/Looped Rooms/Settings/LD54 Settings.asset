@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allRoomsPrototypes:
   - {fileID: 6849834324178107156, guid: ab21c403220c98444a22f6d3f9ce69c8, type: 3}
-  - {fileID: 3473211434462073182, guid: 19e4ee7ec716cab4a804dcc58fce2272, type: 3}
   - {fileID: 6849834324178107156, guid: 6c484302be78c234291296dff3f76087, type: 3}
+  - {fileID: 3473211434462073182, guid: 9c269d172bf5a9e43bcad6cee1a44f3d, type: 3}
+  - {fileID: 3473211434462073182, guid: 19e4ee7ec716cab4a804dcc58fce2272, type: 3}
   doorMappings:
   - <Door1>k__BackingField: {fileID: 11400000, guid: 11ed0bb749b169a47b5750b89341da94,
       type: 2}
@@ -28,4 +29,16 @@ MonoBehaviour:
   - <Door1>k__BackingField: {fileID: 11400000, guid: 2ae3650b84aee8541a435120a8e3ee3b,
       type: 2}
     <Door2>k__BackingField: {fileID: 11400000, guid: 595dc6b797ab733429c85decc352cc62,
+      type: 2}
+  - <Door1>k__BackingField: {fileID: 11400000, guid: f1f0fbe6aa3bbbc4db44b15cf65c1b7d,
+      type: 2}
+    <Door2>k__BackingField: {fileID: 11400000, guid: 86f6cce53f9231140a3f4daae4a31488,
+      type: 2}
+  - <Door1>k__BackingField: {fileID: 11400000, guid: f66413259ced37c4297e30a3fafce98b,
+      type: 2}
+    <Door2>k__BackingField: {fileID: 11400000, guid: 6d68cd0a8f0d0ab4e8ff3edc9444bd9b,
+      type: 2}
+  - <Door1>k__BackingField: {fileID: 11400000, guid: 4868ed4866bfa33478410c4c47f330b7,
+      type: 2}
+    <Door2>k__BackingField: {fileID: 11400000, guid: 030fc26b55bb75641a30f7f7ab363aee,
       type: 2}

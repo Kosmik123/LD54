@@ -1,8 +1,6 @@
 ﻿using NaughtyAttributes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace Bipolar.LoopedRooms
@@ -38,7 +36,6 @@ namespace Bipolar.LoopedRooms
             room.transform.position = Vector3.zero;
             activeRooms.Add(room);
             currentRoom = room;
-
 
             LoadMissingNeighbours(room);
         }

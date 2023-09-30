@@ -6,6 +6,13 @@ namespace Bipolar.LoopedRooms
     {
         [SerializeField]
         private DoorID id;
-        public DoorID Id => id;
+        public DoorID Id
+        {
+            get => id;
+            set
+            {
+                id = value;
+            }
+        }
     }
 }
