@@ -8,6 +8,9 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 15;
 
+    [SerializeField]
+    private Transform head;
+
     private void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -17,7 +20,8 @@ public class Movement : MonoBehaviour
 
         float dt = Time.deltaTime;
 
-        transform.Rotate(rotationSpeed * dt * new Vector3(pitch, yaw, 0));
+        transform.Rotate(Vector3.up, rotationSpeed * dt * yaw);
+        head.Rotate(Vector3.right, rotationSpeed * dt * -pitch);
         transform.Translate(moveSpeed * dt * new Vector3(horizontal, 0, vertical));
     }
 }
