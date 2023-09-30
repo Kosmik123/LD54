@@ -12,4 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee25413123aea2d4dbb8e85400c77a7d, type: 3}
   m_Name: Default Dungeon
   m_EditorClassIdentifier: 
-  allRoomsPrototypes: []
+  allRoomsPrototypes:
+  - {fileID: 6849834324178107156, guid: ab21c403220c98444a22f6d3f9ce69c8, type: 3}
+  doorMappings:
+  - <Door1>k__BackingField: {fileID: 11400000, guid: b11dd05fc9bfe8c49af0454cd3fd4a19,
+      type: 2}
+    <Door2>k__BackingField: {fileID: 11400000, guid: 60ddb0f3672eec246ab9ee1d384fc8f4,
+      type: 2}
+  - <Door1>k__BackingField: {fileID: 11400000, guid: a2ef41f220abf5045bc9578cecc7dc5a,
+      type: 2}
+    <Door2>k__BackingField: {fileID: 11400000, guid: 95f648c6c2f7c2247a25bf70639cf32c,
+      type: 2}
+  - <Door1>k__BackingField: {fileID: 11400000, guid: 476df91b654acfb47beff6e9d504e037,
+      type: 2}
+    <Door2>k__BackingField: {fileID: 11400000, guid: 3443b8846ab2fca41954e510dd11ee16,
+      type: 2}
