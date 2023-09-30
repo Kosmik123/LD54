@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [SelectionBase]
-public class Room : MonoBehaviour
+public class RoomShaper : MonoBehaviour
 {
     private const float halfSqrt3 = 0.86602540378f;
 
@@ -9,7 +9,7 @@ public class Room : MonoBehaviour
     private float size;
     [SerializeField]
     private float wallThickness;
-
+    
     [Space]
     [SerializeField]
     private Transform[] wallsPositions;
@@ -18,7 +18,7 @@ public class Room : MonoBehaviour
     {
         foreach (var wall in wallsPositions)
         {
-            wall.localPosition = (size / 2 * halfSqrt3 - wallThickness / 2)* Vector3.forward;
+            wall.localPosition = (size / 2 * halfSqrt3 - wallThickness / 2) * Vector3.forward;
         }
     }
 }
