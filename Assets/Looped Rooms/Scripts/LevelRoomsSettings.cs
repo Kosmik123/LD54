@@ -9,9 +9,9 @@ namespace Bipolar.LoopedRooms
         [SerializeField]
         private Room[] allRoomsPrototypes;
         public IReadOnlyList<Room> AllRoomsPrototypes => allRoomsPrototypes;
+
+        [SerializeField]
+        private DoorMapping[] doorMappings;
+        public IReadOnlyList<DoorMapping> DoorMappings => doorMappings;
     }
-
 }
-
-
-
