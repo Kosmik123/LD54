@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allRoomsPrototypes:
   - {fileID: 6849834324178107156, guid: ab21c403220c98444a22f6d3f9ce69c8, type: 3}
+  - {fileID: 3473211434462073182, guid: 19e4ee7ec716cab4a804dcc58fce2272, type: 3}
+  - {fileID: 6849834324178107156, guid: 6c484302be78c234291296dff3f76087, type: 3}
   doorMappings:
-  - <Door1>k__BackingField: {fileID: 11400000, guid: b11dd05fc9bfe8c49af0454cd3fd4a19,
+  - <Door1>k__BackingField: {fileID: 11400000, guid: 11ed0bb749b169a47b5750b89341da94,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 60ddb0f3672eec246ab9ee1d384fc8f4,
+    <Door2>k__BackingField: {fileID: 11400000, guid: 32ff23ba7b1b3e6469ea412bd0f40f2c,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: a2ef41f220abf5045bc9578cecc7dc5a,
+  - <Door1>k__BackingField: {fileID: 11400000, guid: 288781c7ec74a0a4e8926f5de5ffe9eb,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 95f648c6c2f7c2247a25bf70639cf32c,
+    <Door2>k__BackingField: {fileID: 11400000, guid: 5699103a72047e84d9e748d37d640642,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: 476df91b654acfb47beff6e9d504e037,
+  - <Door1>k__BackingField: {fileID: 11400000, guid: 2ae3650b84aee8541a435120a8e3ee3b,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 3443b8846ab2fca41954e510dd11ee16,
+    <Door2>k__BackingField: {fileID: 11400000, guid: 595dc6b797ab733429c85decc352cc62,
       type: 2}
