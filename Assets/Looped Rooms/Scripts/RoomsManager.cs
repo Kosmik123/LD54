@@ -35,8 +35,10 @@ namespace Bipolar.LoopedRooms
             activeRooms = new List<Room>();
             LoadMappings();
             var room = roomsSpawner.GetRoom(startingRoomPrefab);
+            room.transform.position = Vector3.zero;
             activeRooms.Add(room);
             currentRoom = room;
+
 
             LoadMissingNeighbours(room);
         }
@@ -174,6 +176,5 @@ namespace Bipolar.LoopedRooms
             room.connections.Clear();
             room.connections.Add(door, exceptionConnection);
         }
-
     }
 }
