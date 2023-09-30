@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee25413123aea2d4dbb8e85400c77a7d, type: 3}
-  m_Name: Default Dungeon
+  m_Name: LD54 Settings
   m_EditorClassIdentifier: 
   allRoomsPrototypes:
   - {fileID: 6849834324178107156, guid: ab21c403220c98444a22f6d3f9ce69c8, type: 3}
