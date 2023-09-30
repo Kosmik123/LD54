@@ -12,4 +12,3 @@ namespace Bipolar.LoopedRooms
         public DoorID Door2 {get; private set; }
     }
 }
-

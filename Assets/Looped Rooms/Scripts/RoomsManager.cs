@@ -28,6 +28,10 @@ namespace Bipolar.LoopedRooms
         private readonly Dictionary<DoorID, DoorID> doorMappings = new Dictionary<DoorID, DoorID>();
         private readonly Dictionary<DoorID, Room> roomPrototypesByDoorID = new Dictionary<DoorID, Room>();
 
+        [SerializeField, ReadOnly]
+        private List<Room.Connection> roomsBehindDoorsToLoad = new List<Room.Connection>();
+        public bool IsLoading => roomsBehindDoorsToLoad.Count > 0;
+
         private void Awake()
         {
             activeRooms = new List<Room>();
@@ -73,15 +77,20 @@ namespace Bipolar.LoopedRooms
                 if (room.connections.ContainsKey(door))
                     continue;
 
-                var neighbour = CreateRoomBehindDoor(door);
-                activeRooms.Add(neighbour.room);
-
-                room.connections[door] = new Room.Connection(neighbour.door, neighbour.room);
-                neighbour.room.connections[neighbour.door] = new Room.Connection(door, room);
+                roomsBehindDoorsToLoad.Add(new Room.Connection(door, room));
             }
         }
 
-        private (Room room, Door door) CreateRoomBehindDoor(Door door)
+        private void LoadRoomBehindDoor(Room room, Door door)
+        {
+            var neighbour = CreateRoomBehindDoor(door);
+            activeRooms.Add(neighbour.room);
+
+            room.connections[door] = new Room.Connection(neighbour.door, neighbour.room);
+            neighbour.room.connections[neighbour.door] = new Room.Connection(door, room);
+        }
+
+        private Room.Connection CreateRoomBehindDoor(Door door)
         {
             var otherDoorId = doorMappings[door.Id];
             var roomPrototype = roomPrototypesByDoorID[otherDoorId];
@@ -97,14 +106,24 @@ namespace Bipolar.LoopedRooms
             roomRotation *= door.transform.rotation;
 
             room.transform.SetPositionAndRotation(roomPosition, roomRotation);
-            return (room, otherDoor);
+            return new Room.Connection(otherDoor, room);
         }
 
         private void Update()
         {
             activeRooms.Sort(RoomsToObserverDistanceComparison);
-            UpdateCurrentRoom();
-            UpdateNearestNeighbour();
+
+            if (IsLoading)
+            {
+                var roomAndDoor = roomsBehindDoorsToLoad[0];
+                roomsBehindDoorsToLoad.RemoveAt(0);
+                LoadRoomBehindDoor(roomAndDoor.room, roomAndDoor.door);
+            }
+            else
+            {
+                UpdateCurrentRoom();
+                UpdateNearestNeighbour();
+            }
         }
 
         private void UpdateCurrentRoom()
@@ -114,21 +133,29 @@ namespace Bipolar.LoopedRooms
                 return;
 
             var previousRoom = currentRoom;
-
             currentRoom = nearestRoom;
 
-            DeleteAllConnectionsExceptOne(previousRoom, currentRoom);
-            DeleteAllConnectionsExceptOne(currentRoom, previousRoom);
-
-            for (int i = activeRooms.Count - 1; i >= 0; i--)
+            foreach (var connection in previousRoom.connections)
             {
-                var room = activeRooms[i];
-                if (room == previousRoom || room == currentRoom) 
+                var room = connection.Value.room;
+                if (room == currentRoom)
                     continue;
 
                 roomsSpawner.Release(room);
-                activeRooms.RemoveAt(i);
+                activeRooms.Remove(room);
             }
+
+            DeleteAllConnectionsExceptOne(previousRoom, currentRoom);
+            //DeleteAllConnectionsExceptOne(currentRoom, previousRoom);
+            //for (int i = activeRooms.Count - 1; i >= 0; i--)
+            //{
+            //    var room = activeRooms[i];
+            //    if (room == previousRoom || room == currentRoom) 
+            //        continue;
+
+            //    roomsSpawner.Release(room);
+            //    activeRooms.RemoveAt(i);
+            //}
 
             LoadMissingNeighbours(currentRoom);
         }

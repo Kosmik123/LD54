@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Bipolar.LoopedRooms
 {
-
     public class Room : MonoBehaviour
     {
         public event System.Action OnRoomInited;
 
+        [System.Serializable]
         public struct Connection
         {
             public Door door;
