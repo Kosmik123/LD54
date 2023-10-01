@@ -9,6 +9,8 @@ public class DeathSequence : MonoBehaviour
 {
     [SerializeField]
     private Movement playerMovement;
+    [SerializeField]
+    private Light playersTorchLight;
 
     [Header("Looking At Angel")]
     [SerializeField]
@@ -63,24 +65,31 @@ public class DeathSequence : MonoBehaviour
     {
         postprocessingProfile.TryGet(out vignetteEffect);
         postprocessingProfile.TryGet(out colorAdjustments);
+        SetDefaultPostprocessing();
+    }
+
+    private void SetDefaultPostprocessing()
+    {
+        colorAdjustments.postExposure.value = screenExposureFadeInCurve.Evaluate(1);
+        vignetteEffect.intensity.value = vignetteIntensityFadeInCurve.Evaluate(1);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(angelGrabTag) && currentSequence == null)
         {
-            var angel = other.GetComponentInParent<SynchronizedTransformController>();
+            var angel = other.GetComponentInParent<Angel>();
             currentSequence = StartCoroutine(DeathSequenceCo(angel));
         }
     }
 
-    private IEnumerator DeathSequenceCo(SynchronizedTransformController angel)
+    private IEnumerator DeathSequenceCo(Angel angel)
     {
         playerMovement.enabled = false;
         deathSoundAudioSource.volume = 1;
         deathSoundAudioSource.Play();
 
-        var angelLookingCamera = angel.GetComponentInChildren<CinemachineVirtualCamera>();
+        var angelLookingCamera = angel.LookingCamera;
         angelLookingCamera.Priority = 100;
         playerCamera.Priority = 0;
         var lookAtAngelWait = new WaitForSeconds(lookAtAngelTransitionDuration);
@@ -96,6 +105,7 @@ public class DeathSequence : MonoBehaviour
             yield return null;
         }
 
+        playersTorchLight.enabled = false;
         roomsManager.enabled = false;
         var teleportingWait = new WaitForSeconds(teleportingDuration / 2);
         yield return teleportingWait;
@@ -106,9 +116,10 @@ public class DeathSequence : MonoBehaviour
             yield return null;
             int randomIndex = Random.Range(0, visitedRooms.Count);
             respawnRoom = visitedRooms[randomIndex];
-            if (respawnRoom.GetComponentInChildren<ChaseTarget>() == null)
+            if (respawnRoom.GetComponentInChildren<Angel>() == null)
             {
-                angel.SynchronizedTransform.LocalPosition = Vector3.zero;
+                angel.SynchronizedTransformController.SynchronizedTransform.LocalPosition = Vector3.zero;
+                angel.SynchronizedTransformController.SynchronizedTransform.LocalRotation = Quaternion.AngleAxis(Random.Range(-180, 180), Vector3.up);
                 roomsManager.TeleportToRoom(respawnRoom);
                 break;
             }
@@ -117,6 +128,7 @@ public class DeathSequence : MonoBehaviour
         angelLookingCamera.Priority = 0;
         roomsManager.enabled = true;
         yield return teleportingWait;
+        playersTorchLight.enabled = true;
 
         progress = 0;
         fadeSpeed = 1f / fadeInDuration;
@@ -147,4 +159,10 @@ public class DeathSequence : MonoBehaviour
         playerMovement.enabled = true;
         currentSequence = null;
     }
+
+    private void OnDestroy()
+    {
+        SetDefaultPostprocessing();
+    }
+
 }
