@@ -13,6 +13,8 @@ public class DeathSequence : MonoBehaviour
     [Header("Looking At Angel")]
     [SerializeField]
     private float lookAtAngelTransitionDuration;
+    [SerializeField]
+    private AudioSource deathSoundAudioSource;
 
     [Header("Screen Fade Out")]
     [SerializeField]
@@ -75,6 +77,8 @@ public class DeathSequence : MonoBehaviour
     private IEnumerator DeathSequenceCo(SynchronizedTransformController angel)
     {
         playerMovement.enabled = false;
+        deathSoundAudioSource.volume = 1;
+        deathSoundAudioSource.Play();
 
         var angelLookingCamera = angel.GetComponentInChildren<CinemachineVirtualCamera>();
         angelLookingCamera.Priority = 100;
@@ -129,9 +133,17 @@ public class DeathSequence : MonoBehaviour
         playerCamera.transform.localRotation = Quaternion.identity;
         playerCamera.Priority = 100;
         playerDownCamera.Priority = 0;
-        var standingUpWait = new WaitForSeconds(standingUpDuration);
-        yield return standingUpWait;
 
+        progress = 0;
+        fadeSpeed = 1f / standingUpDuration;
+        while (progress < 1.1f)
+        {
+            progress += fadeSpeed * Time.deltaTime;
+            deathSoundAudioSource.volume = 1 - progress;
+            yield return null;
+        }
+
+        deathSoundAudioSource.Stop();
         playerMovement.enabled = true;
         currentSequence = null;
     }

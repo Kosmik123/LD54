@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 423991838432415761}
-  - component: {fileID: 3571692932376830906}
+  - component: {fileID: 2724717067397775713}
   m_Layer: 0
   m_Name: Player Grab Trigger
   m_TagString: Angel Grab
@@ -25,15 +25,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140368860791277339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.036, z: 0.551}
+  m_LocalPosition: {x: 0, y: 1, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 285987009545013216}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &3571692932376830906
-CapsuleCollider:
+--- !u!65 &2724717067397775713
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -42,9 +42,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 0.8
-  m_Direction: 2
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1643616386244582147
 GameObject:
@@ -340,7 +339,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f78e4aa9da4aa1a41b9f68bfa3d4e13d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.85
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -548,7 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewBoundsCollider: {fileID: 4553525657836900497}
   chaseTarget: {fileID: 7290842630482438712}
-  grabCollider: {fileID: 3571692932376830906}
+  grabCollider: {fileID: 2724717067397775713}
 --- !u!1 &6406457015189894588
 GameObject:
   m_ObjectHideFlags: 0
