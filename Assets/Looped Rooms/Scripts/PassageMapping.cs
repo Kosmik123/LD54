@@ -3,12 +3,12 @@
 namespace Bipolar.LoopedRooms
 {
     [System.Serializable]
-    public struct DoorMapping
+    public struct PassageMapping
     {
         [field: SerializeField] 
-        public DoorID Door1 { get; private set; }
+        public PassageID Passage1 { get; private set; }
         
         [field: SerializeField] 
-        public DoorID Door2 {get; private set; }
+        public PassageID Passage2 {get; private set; }
     }
 }

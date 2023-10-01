@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Bipolar.LoopedRooms
 {
@@ -10,8 +11,8 @@ namespace Bipolar.LoopedRooms
         private Room[] allRoomsPrototypes;
         public IReadOnlyList<Room> AllRoomsPrototypes => allRoomsPrototypes;
 
-        [SerializeField]
-        private DoorMapping[] doorMappings;
-        public IReadOnlyList<DoorMapping> DoorMappings => doorMappings;
+        [SerializeField, FormerlySerializedAs("doorMappings")]
+        private PassageMapping[] passageMappings;
+        public IReadOnlyList<PassageMapping> PassageMappings => passageMappings;
     }
 }

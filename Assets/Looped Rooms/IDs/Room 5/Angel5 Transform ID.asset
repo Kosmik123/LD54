@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076eaf4726baebd4ba42b3cbfabc9e54, type: 3}
   m_Name: Angel5 Transform ID
   m_EditorClassIdentifier: 
-  guidBytes: 606596169a83f14bb48d2e9a920405f8
-  guid: 16966560-839a-4bf1-b48d-2e9a920405f8
-  localPosition: {x: 0, y: 0, z: 0}
-  localRotation: {x: 0, y: 0, z: 0, w: 0}
-  localScale: {x: 0, y: 0, z: 0}
+  guidBytes: 4e6f58fdf84ea047b01c5dd4fcd78615
+  guid: fd586f4e-4ef8-47a0-b01c-5dd4fcd78615
+  localPosition: {x: 3.2728987, y: 0, z: -2.2840307}
+  localRotation: {x: 0, y: -0.9963912, z: -0, w: -0.08488039}
+  localScale: {x: 1, y: 1, z: 1}

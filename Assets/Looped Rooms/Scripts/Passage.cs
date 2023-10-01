@@ -2,11 +2,11 @@
 
 namespace Bipolar.LoopedRooms
 {
-    public class Door : MonoBehaviour
+    public class Passage : MonoBehaviour
     {
         [SerializeField]
-        private DoorID id;
-        public DoorID Id
+        private PassageID id;
+        public PassageID Id
         {
             get => id;
             set

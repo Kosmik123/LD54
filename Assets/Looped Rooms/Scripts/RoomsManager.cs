@@ -27,12 +27,12 @@ namespace Bipolar.LoopedRooms
         [SerializeField, ReadOnly]
         private List<Room> activeRooms;
 
-        private readonly Dictionary<DoorID, DoorID> doorMappings = new Dictionary<DoorID, DoorID>();
-        private readonly Dictionary<DoorID, Room> roomPrototypesByDoorID = new Dictionary<DoorID, Room>();
+        private readonly Dictionary<PassageID, PassageID> passagesMappings = new Dictionary<PassageID, PassageID>();
+        private readonly Dictionary<PassageID, Room> roomPrototypesByPassageID = new Dictionary<PassageID, Room>();
 
         [SerializeField, ReadOnly]
-        private List<Room.Connection> roomsBehindDoorsToLoad = new List<Room.Connection>();
-        public bool IsLoading => roomsBehindDoorsToLoad.Count > 0;
+        private List<Room.Connection> roomsBehindPassagesToLoad = new List<Room.Connection>();
+        public bool IsLoading => roomsBehindPassagesToLoad.Count > 0;
 
         public void TeleportToRoom(Room room)
         {
@@ -65,67 +65,66 @@ namespace Bipolar.LoopedRooms
 
         private void LoadMappings()
         {
-            foreach (var doorPair in settings.DoorMappings)
+            foreach (var doorPair in settings.PassageMappings)
             {
-                doorMappings.Add(doorPair.Door1, doorPair.Door2);
-                doorMappings.Add(doorPair.Door2, doorPair.Door1);
+                passagesMappings.Add(doorPair.Passage1, doorPair.Passage2);
+                passagesMappings.Add(doorPair.Passage2, doorPair.Passage1);
             }
 
             foreach (var roomPrototype in settings.AllRoomsPrototypes)
             {
-                var roomDoors = roomPrototype.Doors;
-                foreach (var door in roomDoors)
-                    if (door)
-                        roomPrototypesByDoorID.Add(door.Id, roomPrototype);
+                var roomPassages = roomPrototype.Passages;
+                foreach (var passage in roomPassages)
+                    if (passage)
+                        roomPrototypesByPassageID.Add(passage.Id, roomPrototype);
             }
         }
 
         private void LoadMissingNeighbours(Room room)
         {
-            var doors = room.Doors;
-            LoadNeighbours(room, doors);
+            var passages = room.Passages;
+            LoadNeighbours(room, passages);
         }
 
-        private void LoadNeighbours(Room room, IReadOnlyList<Door> doors)
+        private void LoadNeighbours(Room room, IReadOnlyList<Passage> passages)
         {
-            foreach (var door in doors)
+            foreach (var passage in passages)
             {
-                if (door == null)
+                if (passage == null)
                     continue;
 
-                if (room.connections.ContainsKey(door))
+                if (room.connections.ContainsKey(passage))
                     continue;
 
-                roomsBehindDoorsToLoad.Add(new Room.Connection(door, room));
+                roomsBehindPassagesToLoad.Add(new Room.Connection(passage, room));
             }
         }
 
-        private void LoadRoomBehindDoor(Room room, Door door)
+        private void LoadRoomBehindDoor(Room room, Passage passage)
         {
-            var neighbour = CreateRoomBehindDoor(door);
+            var neighbour = CreateRoomBehindDoor(passage);
             activeRooms.Add(neighbour.room);
 
-            room.connections[door] = new Room.Connection(neighbour.door, neighbour.room);
-            neighbour.room.connections[neighbour.door] = new Room.Connection(door, room);
+            room.connections[passage] = new Room.Connection(neighbour.passage, neighbour.room);
+            neighbour.room.connections[neighbour.passage] = new Room.Connection(passage, room);
         }
 
-        private Room.Connection CreateRoomBehindDoor(Door door)
+        private Room.Connection CreateRoomBehindDoor(Passage passage)
         {
-            var otherDoorId = doorMappings[door.Id];
-            var roomPrototype = roomPrototypesByDoorID[otherDoorId];
+            var otherDoorID = passagesMappings[passage.Id];
+            var roomPrototype = roomPrototypesByPassageID[otherDoorID];
             var room = roomsSpawner.GetRoom(roomPrototype);
-            var otherDoorID = doorMappings[door.Id];
-            var otherDoor = room.GetDoor(otherDoorID);
+            var otherPassage = room.GetPassage(otherDoorID);
 
-            var distance = Vector3.Distance(room.transform.position, otherDoor.transform.position);
-            Vector3 roomPosition = door.transform.position + door.transform.rotation * Vector3.forward * distance;
+            var distance = Vector3.Distance(room.transform.position, otherPassage.transform.position);
+            Vector3 roomPosition = passage.transform.position + passage.transform.rotation * Vector3.forward * distance;
 
-            Quaternion roomRotation = Quaternion.Inverse(otherDoor.transform.rotation);
+            Quaternion roomRotation = Quaternion.Inverse(otherPassage.transform.rotation);
             roomRotation *= Quaternion.AngleAxis(180, Vector3.up);
-            roomRotation *= door.transform.rotation;
+            roomRotation *= passage.transform.rotation;
 
             room.transform.SetPositionAndRotation(roomPosition, roomRotation);
-            return new Room.Connection(otherDoor, room);
+            return new Room.Connection(otherPassage, room);
         }
 
         private void Update()
@@ -134,9 +133,9 @@ namespace Bipolar.LoopedRooms
 
             if (IsLoading)
             {
-                var roomAndDoor = roomsBehindDoorsToLoad[0];
-                roomsBehindDoorsToLoad.RemoveAt(0);
-                LoadRoomBehindDoor(roomAndDoor.room, roomAndDoor.door);
+                var roomAndPassage = roomsBehindPassagesToLoad[0];
+                roomsBehindPassagesToLoad.RemoveAt(0);
+                LoadRoomBehindDoor(roomAndPassage.room, roomAndPassage.passage);
             }
             else
             {
@@ -196,7 +195,7 @@ namespace Bipolar.LoopedRooms
             nearestNeighbour = activeRooms[1];
 
             var connectionToCurrentRoom = nearestNeighbour.connections.First(kvp => kvp.Value.room == currentRoom);
-            var oppositeDoors = nearestNeighbour.GetOppositeDoors(connectionToCurrentRoom.Key);
+            var oppositeDoors = nearestNeighbour.GetOppositePassages(connectionToCurrentRoom.Key);
 
             LoadNeighbours(nearestNeighbour, oppositeDoors);
         }
@@ -210,12 +209,12 @@ namespace Bipolar.LoopedRooms
 
         private void DeleteAllConnectionsExceptOne(Room room, Room exception)
         {
-            var door = room.connections.FirstOrDefault(kvp => kvp.Value.room == exception).Key;
-            if (door == null)
+            var passage = room.connections.FirstOrDefault(kvp => kvp.Value.room == exception).Key;
+            if (passage == null)
                 Debug.LogError("BRAK POŁĄCZEŃ?");
-            var exceptionConnection = room.connections[door];
+            var exceptionConnection = room.connections[passage];
             room.connections.Clear();
-            room.connections.Add(door, exceptionConnection);
+            room.connections.Add(passage, exceptionConnection);
         }
     }
 }

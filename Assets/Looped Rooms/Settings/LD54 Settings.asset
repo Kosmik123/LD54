@@ -20,52 +20,52 @@ MonoBehaviour:
   - {fileID: 3473211434462073182, guid: 754f4bcbe5b71f54892c580e8ff0323e, type: 3}
   - {fileID: 3473211434462073182, guid: 9a31f57a22549c2439b89b8d55fa7c0b, type: 3}
   - {fileID: 3473211434462073182, guid: 6f45bd7e62bfb4748bea28efef0baae4, type: 3}
-  doorMappings:
-  - <Door1>k__BackingField: {fileID: 11400000, guid: 11ed0bb749b169a47b5750b89341da94,
+  passageMappings:
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 11ed0bb749b169a47b5750b89341da94,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 32ff23ba7b1b3e6469ea412bd0f40f2c,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 32ff23ba7b1b3e6469ea412bd0f40f2c,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: 2ae3650b84aee8541a435120a8e3ee3b,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 2ae3650b84aee8541a435120a8e3ee3b,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 595dc6b797ab733429c85decc352cc62,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 595dc6b797ab733429c85decc352cc62,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: 288781c7ec74a0a4e8926f5de5ffe9eb,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 5699103a72047e84d9e748d37d640642,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 5699103a72047e84d9e748d37d640642,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 288781c7ec74a0a4e8926f5de5ffe9eb,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: 4868ed4866bfa33478410c4c47f330b7,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 4868ed4866bfa33478410c4c47f330b7,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 6d68cd0a8f0d0ab4e8ff3edc9444bd9b,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 6d68cd0a8f0d0ab4e8ff3edc9444bd9b,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: f1f0fbe6aa3bbbc4db44b15cf65c1b7d,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: f1f0fbe6aa3bbbc4db44b15cf65c1b7d,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 86f6cce53f9231140a3f4daae4a31488,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 86f6cce53f9231140a3f4daae4a31488,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: f66413259ced37c4297e30a3fafce98b,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: f66413259ced37c4297e30a3fafce98b,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: c2d5ebb5abaa66c4da263b7dd11d840f,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: c2d5ebb5abaa66c4da263b7dd11d840f,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: 030fc26b55bb75641a30f7f7ab363aee,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 030fc26b55bb75641a30f7f7ab363aee,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: e60330763c3c78f499e9d48b7d87ba93,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: e60330763c3c78f499e9d48b7d87ba93,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: 623fbed98949fbf45afcb56cc5eec993,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 623fbed98949fbf45afcb56cc5eec993,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 008f016b46b922b48990b6af293605d4,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 008f016b46b922b48990b6af293605d4,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: 869d36b55535882479b58a92a618856d,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 869d36b55535882479b58a92a618856d,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: ea03c05cc3c47d74fa50fc6f8c374d24,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: ea03c05cc3c47d74fa50fc6f8c374d24,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: a4a2bd92ffdc0ce45a52e644f36464a8,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: a4a2bd92ffdc0ce45a52e644f36464a8,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 7767e4fd0d1d5de49accc9c4ce1e40da,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 7767e4fd0d1d5de49accc9c4ce1e40da,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: e4b121aee467f754587017dbe1071b2f,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: e4b121aee467f754587017dbe1071b2f,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 57767f529bef68b4b9780de1b3889296,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 57767f529bef68b4b9780de1b3889296,
       type: 2}
-  - <Door1>k__BackingField: {fileID: 11400000, guid: 39520713b209c1f43870e54c5665a35b,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 39520713b209c1f43870e54c5665a35b,
       type: 2}
-    <Door2>k__BackingField: {fileID: 11400000, guid: 4b411ed50f1f0144e89f0c2ba364f28c,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 4b411ed50f1f0144e89f0c2ba364f28c,
       type: 2}

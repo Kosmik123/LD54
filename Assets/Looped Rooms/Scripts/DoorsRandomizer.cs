@@ -24,8 +24,8 @@ namespace Bipolar.LoopedRooms
 
         private void Randomize(Room room)
         {
-            var doors = room.Doors;
-            var doorIDs = new List<DoorID>();
+            var doors = room.Passages;
+            var doorIDs = new List<PassageID>();
             foreach (var door in doors)
                 if (door)
                     doorIDs.Add(door.Id);

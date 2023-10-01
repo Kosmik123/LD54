@@ -12,12 +12,12 @@ namespace Bipolar.LoopedRooms
         [System.Serializable]
         public struct Connection
         {
-            public Door door;
+            public Passage passage;
             public Room room;
 
-            public Connection(Door connectedDoor, Room connectedRoom)
+            public Connection(Passage connectedDoor, Room connectedRoom)
             {
-                door = connectedDoor;
+                passage = connectedDoor;
                 room = connectedRoom;
             }
         }
@@ -29,19 +29,19 @@ namespace Bipolar.LoopedRooms
         private Transform[] wallsPositions;
         public IReadOnlyList<Transform> WallsPositions => wallsPositions;
 
-        private Door[] doors;
-        public IReadOnlyList<Door> Doors
+        private Passage[] passages;
+        public IReadOnlyList<Passage> Passages
         {
             get
             {
-                if (doors == null || doors.Length < 1)
-                    PopulateDoors();
-                return doors;
+                if (passages == null || passages.Length < 1)
+                    PopulatePassages();
+                return passages;
             }
         }
 
-        private readonly Dictionary<DoorID, Door> doorsByID = new Dictionary<DoorID, Door>();
-        public readonly Dictionary<Door, Connection> connections = new Dictionary<Door, Connection>();
+        private readonly Dictionary<PassageID, Passage> passagesByID = new Dictionary<PassageID, Passage>();
+        public readonly Dictionary<Passage, Connection> connections = new Dictionary<Passage, Connection>();
 
         public void Init(Room prototype)
         {
@@ -49,43 +49,43 @@ namespace Bipolar.LoopedRooms
             OnRoomInited?.Invoke();
         }
 
-        private void PopulateDoors()
+        private void PopulatePassages()
         {
             connections.Clear();
-            doors = new Door[6];
+            passages = new Passage[6];
             for (int i = 0; i < wallsPositions.Length; i++)
-                doors[i] = wallsPositions[i].GetComponentInChildren<Door>();
+                passages[i] = wallsPositions[i].GetComponentInChildren<Passage>();
 
-            foreach (var door in doors)
-                if (door)
-                    doorsByID.Add(door.Id, door);
+            foreach (var passage in passages)
+                if (passage)
+                    passagesByID.Add(passage.Id, passage);
         }
 
-        public Door GetDoor(DoorID id)
+        public Passage GetPassage(PassageID id)
         {
-            if (doors == null || doors.Length < 1)
-                PopulateDoors();
-            return doorsByID[id];
+            if (passages == null || passages.Length < 1)
+                PopulatePassages();
+            return passagesByID[id];
         }
 
-        public bool HasDoor(DoorID id)
+        public bool HasPassage(PassageID id)
         {
-            return doorsByID.ContainsKey(id);
+            return passagesByID.ContainsKey(id);
         }
 
-        public IReadOnlyList<Door> GetOppositeDoors(Door door)
+        public IReadOnlyList<Passage> GetOppositePassages(Passage passage)
         {
-            var oppositeDoors = new List<Door>();
-            int doorIndex = System.Array.IndexOf(doors, door);
+            var oppositePassages = new List<Passage>();
+            int passageIndex = System.Array.IndexOf(passages, passage);
             for (int i = 2; i <= 4; i++)
             {
-                int oppositeIndex = (doorIndex + i) % 6;
-                var oppositeDoor = doors[oppositeIndex];
-                if (oppositeDoor != null)
-                    oppositeDoors.Add(oppositeDoor);
+                int oppositeIndex = (passageIndex + i) % 6;
+                var oppositePassage = passages[oppositeIndex];
+                if (oppositePassage != null)
+                    oppositePassages.Add(oppositePassage);
             }
 
-            return oppositeDoors;
+            return oppositePassages;
         }
 
         public void Enter()
