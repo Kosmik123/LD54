@@ -69,3 +69,7 @@ MonoBehaviour:
       type: 2}
     <Passage2>k__BackingField: {fileID: 11400000, guid: 4b411ed50f1f0144e89f0c2ba364f28c,
       type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 615d3eeab96ed0d4aa426cd3a8726b66,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 36322add1855098479c2695fce128cbc,
+      type: 2}
