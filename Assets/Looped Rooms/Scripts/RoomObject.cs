@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 namespace Bipolar.LoopedRooms
 {
+
     public class RoomObject : MonoBehaviour
     {
         private Room room;

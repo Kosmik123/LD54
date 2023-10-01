@@ -6,6 +6,8 @@ namespace Bipolar.LoopedRooms
     public class Room : MonoBehaviour
     {
         public event System.Action OnRoomInited;
+        public event System.Action OnRoomEntered;
+        public event System.Action OnRoomExited;
 
         [System.Serializable]
         public struct Connection
@@ -30,7 +32,7 @@ namespace Bipolar.LoopedRooms
         private Door[] doors;
         public IReadOnlyList<Door> Doors
         {
-            get 
+            get
             {
                 if (doors == null || doors.Length < 1)
                     PopulateDoors();
@@ -59,21 +61,21 @@ namespace Bipolar.LoopedRooms
                     doorsByID.Add(door.Id, door);
         }
 
-        public Door GetDoor (DoorID id)
+        public Door GetDoor(DoorID id)
         {
             if (doors == null || doors.Length < 1)
                 PopulateDoors();
             return doorsByID[id];
         }
-        
-        public bool HasDoor (DoorID id)
+
+        public bool HasDoor(DoorID id)
         {
             return doorsByID.ContainsKey(id);
         }
 
         public IReadOnlyList<Door> GetOppositeDoors(Door door)
         {
-            var oppositeDoors =  new List<Door>();
+            var oppositeDoors = new List<Door>();
             int doorIndex = System.Array.IndexOf(doors, door);
             for (int i = 2; i <= 4; i++)
             {
@@ -84,6 +86,16 @@ namespace Bipolar.LoopedRooms
             }
 
             return oppositeDoors;
+        }
+
+        public void Enter()
+        {
+            OnRoomEntered?.Invoke();
+        }
+
+        public void Exit()
+        {
+            OnRoomExited?.Invoke();
         }
     }
 }

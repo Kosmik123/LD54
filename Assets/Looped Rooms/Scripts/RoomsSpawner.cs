@@ -25,7 +25,7 @@ namespace Bipolar.LoopedRooms
         private Room SpawnRoom(Room prototype)
         {
             var room = Instantiate(prototype, transform);
-            room.gameObject.name = $"{prototype.name} {poolByPrototypes[prototype].CountAll}";
+            room.gameObject.name = $"{prototype.name} ({poolByPrototypes[prototype].CountAll})";
             room.Init(prototype);
             return room;
         }

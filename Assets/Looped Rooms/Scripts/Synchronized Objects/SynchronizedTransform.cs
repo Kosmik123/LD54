@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Bipolar.LoopedRooms
 {
-
     [CreateAssetMenu(menuName = "Looped Rooms/Synchronized ID")]
     public class SynchronizedTransform : UniqueID, ILocalTransform
     {

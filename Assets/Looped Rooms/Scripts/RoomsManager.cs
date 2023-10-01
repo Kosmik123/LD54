@@ -7,13 +7,15 @@ namespace Bipolar.LoopedRooms
 {
     public class RoomsManager : MonoBehaviour
     {
+        public event System.Action<Room> OnRoomEntered;
+
         [Header("Settings")]
         [SerializeField]
         private LevelRoomsSettings settings;
         [SerializeField]
         private RoomsSpawner roomsSpawner;
         [SerializeField]
-        private Room startingRoomPrefab;
+        private Room[] startingRoomPrefabs;
         [SerializeField]
         private Transform observer;
 
@@ -32,16 +34,33 @@ namespace Bipolar.LoopedRooms
         private List<Room.Connection> roomsBehindDoorsToLoad = new List<Room.Connection>();
         public bool IsLoading => roomsBehindDoorsToLoad.Count > 0;
 
+        public void TeleportToRoom(Room room)
+        {
+            observer.transform.position = Vector3.zero;
+            room = room.Prototype != null ? room.Prototype : room;
+            nearestNeighbour = null;
+            foreach (var r in activeRooms)
+                roomsSpawner.Release(r);
+
+            activeRooms.Clear();
+
+            room = roomsSpawner.GetRoom(room);
+            room.transform.position = Vector3.zero;
+            activeRooms.Add(room);
+            SetCurrentRoom(room);
+        }
+
         private void Awake()
         {
             activeRooms = new List<Room>();
             LoadMappings();
-            var room = roomsSpawner.GetRoom(startingRoomPrefab);
+
+            int randomIndex = Random.Range(0, startingRoomPrefabs.Length);
+            var startingRoomPrototype = startingRoomPrefabs[randomIndex];
+            var room = roomsSpawner.GetRoom(startingRoomPrototype);
             room.transform.position = Vector3.zero;
             activeRooms.Add(room);
-            currentRoom = room;
-
-            LoadMissingNeighbours(room);
+            SetCurrentRoom(room);   
         }
 
         private void LoadMappings()
@@ -132,32 +151,28 @@ namespace Bipolar.LoopedRooms
             if (nearestRoom == currentRoom)
                 return;
 
+            currentRoom.Exit();
             var previousRoom = currentRoom;
-            currentRoom = nearestRoom;
 
             foreach (var connection in previousRoom.connections)
             {
                 var room = connection.Value.room;
-                if (room == currentRoom)
+                if (room == nearestRoom)
                     continue;
 
                 roomsSpawner.Release(room);
                 activeRooms.Remove(room);
             }
+            DeleteAllConnectionsExceptOne(previousRoom, nearestRoom);
+            SetCurrentRoom(nearestRoom);
+        }
 
-            DeleteAllConnectionsExceptOne(previousRoom, currentRoom);
-            //DeleteAllConnectionsExceptOne(currentRoom, previousRoom);
-            //for (int i = activeRooms.Count - 1; i >= 0; i--)
-            //{
-            //    var room = activeRooms[i];
-            //    if (room == previousRoom || room == currentRoom) 
-            //        continue;
-
-            //    roomsSpawner.Release(room);
-            //    activeRooms.RemoveAt(i);
-            //}
-
+        private void SetCurrentRoom(Room room)
+        {
+            currentRoom = room;
             LoadMissingNeighbours(currentRoom);
+            currentRoom.Enter();
+            OnRoomEntered?.Invoke(currentRoom);
         }
 
         private void UpdateNearestNeighbour()
@@ -195,7 +210,9 @@ namespace Bipolar.LoopedRooms
 
         private void DeleteAllConnectionsExceptOne(Room room, Room exception)
         {
-            var door = room.connections.First(kvp => kvp.Value.room == exception).Key;
+            var door = room.connections.FirstOrDefault(kvp => kvp.Value.room == exception).Key;
+            if (door == null)
+                Debug.LogError("BRAK POŁĄCZEŃ?");
             var exceptionConnection = room.connections[door];
             room.connections.Clear();
             room.connections.Add(door, exceptionConnection);

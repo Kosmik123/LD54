@@ -15,8 +15,8 @@ public class Movement : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        float yaw = Input.GetAxis("Mouse X");
-        float pitch = Input.GetAxis("Mouse Y");
+        float yaw = Input.GetAxisRaw("Mouse X");
+        float pitch = Input.GetAxisRaw("Mouse Y");
 
         float dt = Time.deltaTime;
 

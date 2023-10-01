@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LD54 Settings
   m_EditorClassIdentifier: 
   allRoomsPrototypes:
-  - {fileID: 6849834324178107156, guid: ab21c403220c98444a22f6d3f9ce69c8, type: 3}
+  - {fileID: 6849834324178107156, guid: 3a1184207bd07c04aad1f0bac64a3a33, type: 3}
   - {fileID: 6849834324178107156, guid: 6c484302be78c234291296dff3f76087, type: 3}
   - {fileID: 3473211434462073182, guid: 9c269d172bf5a9e43bcad6cee1a44f3d, type: 3}
   - {fileID: 3473211434462073182, guid: 19e4ee7ec716cab4a804dcc58fce2272, type: 3}
