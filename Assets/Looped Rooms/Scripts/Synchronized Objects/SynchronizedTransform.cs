@@ -1,4 +1,4 @@
-﻿using NaughtyAttributes;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Bipolar.LoopedRooms
@@ -10,13 +10,13 @@ namespace Bipolar.LoopedRooms
         public event System.Action<Quaternion> OnLocalRotationChanged;
         public event System.Action<Vector3> OnLocalScaleChanged;
 
-        [SerializeField, ReadOnly] 
+        [SerializeField] 
         private Vector3 localPosition; 
         
-        [SerializeField, ReadOnly] 
+        [SerializeField] 
         private Quaternion localRotation; 
         
-        [SerializeField, ReadOnly] 
+        [SerializeField] 
         private Vector3 localScale;
 
         public Vector3 LocalPosition
@@ -47,6 +47,14 @@ namespace Bipolar.LoopedRooms
                 localScale = value;
                 OnLocalScaleChanged?.Invoke(localScale);
             }
+        }
+
+        [ContextMenu("Reset Transform")]
+        protected void ResetTransform()
+        {
+            localPosition = Vector3.zero;
+            localRotation = Quaternion.identity;
+            localScale = Vector3.one;
         }
     } 
 }

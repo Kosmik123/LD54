@@ -13,7 +13,8 @@ namespace Bipolar.LoopedRooms
         private string guid;
         public Guid Guid => new Guid(guidBytes);
 
-        private void Reset()
+        [ContextMenu("Reset ID")]
+        private void ResetID()
         {
             guidBytes = Guid.NewGuid().ToByteArray();
             RefreshInspector();
