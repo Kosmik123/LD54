@@ -80,9 +80,9 @@ namespace Bipolar.LoopedRooms
             for (int i = 2; i <= 4; i++)
             {
                 int oppositeIndex = (passageIndex + i) % 6;
-                var oppositePassage = passages[oppositeIndex];
-                if (oppositePassage != null)
-                    oppositePassages.Add(oppositePassage);
+                var oppositeDoor = passages[oppositeIndex];
+                if (oppositeDoor != null)
+                    oppositePassages.Add(oppositeDoor);
             }
 
             return oppositePassages;

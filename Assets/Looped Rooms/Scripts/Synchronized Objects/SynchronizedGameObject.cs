@@ -8,9 +8,14 @@ namespace Bipolar.LoopedRooms
     {
         public event System.Action<bool> OnActiveChanged;
 
-        [SerializeField, ReadOnly]
+        [SerializeField]
         public bool active;
         public bool ActiveSelf => active;
+
+        private void OnEnable()
+        {
+            active = true;
+        }
 
         public void SetActive(bool active)
         {

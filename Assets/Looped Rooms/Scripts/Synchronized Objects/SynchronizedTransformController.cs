@@ -10,21 +10,17 @@ namespace Bipolar.LoopedRooms
 
         private void Awake()
         {
+            synchronizedTransform.Add(transform);
             synchronizedTransform.OnLocalPositionChanged += UpdatePosition;
             synchronizedTransform.OnLocalRotationChanged += UpdateRotation;
             synchronizedTransform.OnLocalScaleChanged += UpdateScale;
         }
 
-        private void OnEnable()
+        private void Start()
         {
             transform.localPosition = synchronizedTransform.LocalPosition;
             transform.localRotation = synchronizedTransform.LocalRotation;
             transform.localScale = synchronizedTransform.LocalScale;
-        }
-
-        private void Start()
-        {
-            Synchronize();
         }
 
         [ContextMenu("Synchronize")]
@@ -55,6 +51,7 @@ namespace Bipolar.LoopedRooms
             synchronizedTransform.OnLocalPositionChanged -= UpdatePosition;
             synchronizedTransform.OnLocalRotationChanged -= UpdateRotation;
             synchronizedTransform.OnLocalScaleChanged -= UpdateScale;
+            synchronizedTransform.Remove(transform);
         }
     }
 }

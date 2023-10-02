@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076eaf4726baebd4ba42b3cbfabc9e54, type: 3}
+  m_Name: 2B Door
+  m_EditorClassIdentifier: 
+  guidBytes: 52b55e46e361d04293515c1a6fd1a58c
+  guid: 465eb552-61e3-42d0-9351-5c1a6fd1a58c
+  localPosition: {x: 0, y: 0, z: 0}
+  localRotation: {x: 0, y: -1, z: 0, w: -0.00000004371139}
+  localScale: {x: 1, y: 1, z: 1}
+  sceneTransforms: []

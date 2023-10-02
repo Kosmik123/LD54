@@ -13,6 +13,11 @@ namespace Bipolar.LoopedRooms
         private string guid;
         public Guid Guid => new Guid(guidBytes);
 
+        protected virtual void Reset()
+        {
+            ResetID();
+        }
+
         [ContextMenu("Reset ID")]
         private void ResetID()
         {

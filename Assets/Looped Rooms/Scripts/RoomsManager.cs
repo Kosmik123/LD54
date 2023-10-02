@@ -1,6 +1,7 @@
 ﻿using NaughtyAttributes;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Bipolar.LoopedRooms
@@ -60,7 +61,7 @@ namespace Bipolar.LoopedRooms
             var room = roomsSpawner.GetRoom(startingRoomPrototype);
             room.transform.position = Vector3.zero;
             activeRooms.Add(room);
-            SetCurrentRoom(room);   
+            SetCurrentRoom(room);
         }
 
         private void LoadMappings()
@@ -72,11 +73,24 @@ namespace Bipolar.LoopedRooms
             }
 
             foreach (var roomPrototype in settings.AllRoomsPrototypes)
-            {
-                var roomPassages = roomPrototype.Passages;
-                foreach (var passage in roomPassages)
+                foreach (var passage in roomPrototype.Passages)
                     if (passage)
-                        roomPrototypesByPassageID.Add(passage.Id, roomPrototype);
+                        AddPassageToRoomMapping(roomPrototype, passage.Id);
+
+            foreach (var additionalMapping in settings.AdditionalMappings)
+                foreach (var passageID in additionalMapping.Passages)
+                    AddPassageToRoomMapping(additionalMapping.Room, passageID);
+        }
+
+        public void AddPassageToRoomMapping(Room roomPrototype, PassageID passageID)
+        {
+            if (roomPrototypesByPassageID.ContainsKey(passageID))
+            {
+                Debug.LogError($"{roomPrototype.name} contains already existing passage {passageID.name}");
+            }
+            else
+            {
+                roomPrototypesByPassageID.Add(passageID, roomPrototype);
             }
         }
 

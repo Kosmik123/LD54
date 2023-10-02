@@ -15,13 +15,13 @@ namespace Bipolar.LoopedRooms
 
         private void Start()
         {
-            Synchronize();
+            UpdateActive(synchronizedGameObject.ActiveSelf);
         }
 
         [ContextMenu("Synchronize")]
         public void Synchronize()
         {
-            gameObject.SetActive(synchronizedGameObject.ActiveSelf);
+            synchronizedGameObject.SetActive(gameObject.activeSelf);
         }
 
         private void UpdateActive(bool active)

@@ -15,6 +15,8 @@ MonoBehaviour:
   allRoomsPrototypes:
   - {fileID: 6849834324178107156, guid: 3a1184207bd07c04aad1f0bac64a3a33, type: 3}
   - {fileID: 6849834324178107156, guid: 6c484302be78c234291296dff3f76087, type: 3}
+  - {fileID: 3473211434462073182, guid: 0ff13cb8ae6bf3243b7a20ebf75a79e1, type: 3}
+  - {fileID: 3473211434462073182, guid: 5b6580cc5b49e984d86c15a0dab4e326, type: 3}
   - {fileID: 3473211434462073182, guid: 9c269d172bf5a9e43bcad6cee1a44f3d, type: 3}
   - {fileID: 3473211434462073182, guid: 19e4ee7ec716cab4a804dcc58fce2272, type: 3}
   - {fileID: 3473211434462073182, guid: 754f4bcbe5b71f54892c580e8ff0323e, type: 3}
@@ -32,6 +34,14 @@ MonoBehaviour:
   - <Passage1>k__BackingField: {fileID: 11400000, guid: 5699103a72047e84d9e748d37d640642,
       type: 2}
     <Passage2>k__BackingField: {fileID: 11400000, guid: 288781c7ec74a0a4e8926f5de5ffe9eb,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 0bee9a93405da9e43bf6e7996a3975f3,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: d9aeb6d828fecc14f8e19f221ce74626,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 2825ef480b5cdc348b5b39128cefe7a9,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: e66e73606551864478b3f0d71a17709b,
       type: 2}
   - <Passage1>k__BackingField: {fileID: 11400000, guid: 4868ed4866bfa33478410c4c47f330b7,
       type: 2}
@@ -73,3 +83,13 @@ MonoBehaviour:
       type: 2}
     <Passage2>k__BackingField: {fileID: 11400000, guid: 36322add1855098479c2695fce128cbc,
       type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: b234ab714c4560b408d89261b75396d9,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: c7e839048b6023049a8596f7dadcc89c,
+      type: 2}
+  additionalMappings:
+  - <Room>k__BackingField: {fileID: 3473211434462073182, guid: 6f45bd7e62bfb4748bea28efef0baae4,
+      type: 3}
+    passages:
+    - {fileID: 11400000, guid: b234ab714c4560b408d89261b75396d9, type: 2}
+    - {fileID: 11400000, guid: 54c6a4da306f2bd4d8aa2a82e486da3a, type: 2}
