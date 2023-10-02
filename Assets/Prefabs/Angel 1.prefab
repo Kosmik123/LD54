@@ -681,6 +681,8 @@ MonoBehaviour:
   <ChaseTarget>k__BackingField: {fileID: 7290842630482438712}
   <SynchronizedTransformController>k__BackingField: {fileID: 2284768771646766741}
   <LookingCamera>k__BackingField: {fileID: 1726131312069634591}
+  <MeshRenderer>k__BackingField: {fileID: 5604787567577292550}
+  bloodyMaterial: {fileID: 2100000, guid: 935c43fb5a88b6d42a673279bf69ccca, type: 2}
 --- !u!1 &6406457015189894588
 GameObject:
   m_ObjectHideFlags: 0

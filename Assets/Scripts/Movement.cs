@@ -11,6 +11,8 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private Transform head;
 
+    private float headPitch = 0;
+
     private void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -21,7 +23,10 @@ public class Movement : MonoBehaviour
         float dt = Time.deltaTime;
 
         transform.Rotate(Vector3.up, rotationSpeed * dt * yaw);
-        head.Rotate(Vector3.right, rotationSpeed * dt * -pitch);
+
+        headPitch -= rotationSpeed * dt * pitch;
+        headPitch = Mathf.Clamp(headPitch, -90, 90);
+        head.localRotation = Quaternion.AngleAxis(headPitch, Vector3.right);
         transform.Translate(moveSpeed * dt * new Vector3(horizontal, 0, vertical));
     }
 }

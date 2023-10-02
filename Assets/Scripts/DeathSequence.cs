@@ -79,6 +79,7 @@ public class DeathSequence : MonoBehaviour
         if (other.CompareTag(angelGrabTag) && currentSequence == null)
         {
             var angel = other.GetComponentInParent<Angel>();
+            angel.ChangeMaterial();
             currentSequence = StartCoroutine(DeathSequenceCo(angel));
         }
     }
@@ -146,7 +147,7 @@ public class DeathSequence : MonoBehaviour
         playerCamera.Priority = 100;
         playerDownCamera.Priority = 0;
 
-        progress = 0;
+        progress = 0.0f;
         fadeSpeed = 1f / standingUpDuration;
         while (progress < 1.1f)
         {

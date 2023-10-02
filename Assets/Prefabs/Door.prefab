@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4198026237356985355}
+  - component: {fileID: 5992945642049914611}
+  - component: {fileID: 2897664627650241679}
   m_Layer: 0
-  m_Name: Openable Door
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,6 +34,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5992945642049914611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074784597907769880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485368bf6f6dbd84b805a3e9d15fd1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hint: 
+  useAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5992945642049914611}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  raycastTarget: {fileID: 2897664627650241679}
+  color: 0
+  closedHint: 'Locked.
+
+    You need a correct key to open'
+  openHint: Use <sprite name="Left Mouse"> to open
+  isOpen: 0
+  rotatingTranform: {fileID: 8125824779956627531}
+  openingDuration: 2
+  openAngle: -90
+--- !u!114 &2897664627650241679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074784597907769880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382fe2ad91461ee4c8caf27eed0a2538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onRayEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onRayExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3922145775232484434
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,8 +103,10 @@ GameObject:
   - component: {fileID: 9010209140741343769}
   - component: {fileID: 6622959207520839809}
   - component: {fileID: 470438438162111183}
-  - component: {fileID: 5475436963790945206}
-  m_Layer: 0
+  - component: {fileID: 7504986791180324237}
+  - component: {fileID: 4964549383820340540}
+  - component: {fileID: 8125824779956627531}
+  m_Layer: 10
   m_Name: Wooden Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,8 +422,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3922145775232484434}
   m_Mesh: {fileID: 0}
---- !u!64 &5475436963790945206
-MeshCollider:
+--- !u!65 &7504986791180324237
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -372,7 +432,34 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.1}
+  m_Center: {x: 0.5, y: 1, z: 0.05}
+--- !u!114 &4964549383820340540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922145775232484434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b512b870f33c447a6d443721e2fc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastTargets:
+  - {fileID: 2897664627650241679}
+  initialLayer: 0
+--- !u!114 &8125824779956627531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922145775232484434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9710ff6abb96e49994b172dd94bf02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  synchronizedTransform: {fileID: 0}
