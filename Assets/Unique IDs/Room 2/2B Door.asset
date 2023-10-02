@@ -15,6 +15,6 @@ MonoBehaviour:
   guidBytes: 52b55e46e361d04293515c1a6fd1a58c
   guid: 465eb552-61e3-42d0-9351-5c1a6fd1a58c
   localPosition: {x: 0, y: 0, z: 0}
-  localRotation: {x: 0, y: -1, z: 0, w: -0.00000004371139}
+  localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   localScale: {x: 1, y: 1, z: 1}
   sceneTransforms: []
