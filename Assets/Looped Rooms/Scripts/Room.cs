@@ -57,8 +57,16 @@ namespace Bipolar.LoopedRooms
                 passages[i] = wallsPositions[i].GetComponentInChildren<Passage>();
 
             foreach (var passage in passages)
+            {
                 if (passage)
+                {
+                    if (passage.Id == null)
+                        Debug.LogError($"Room {name} has null passage");
+
                     passagesByID.Add(passage.Id, passage);
+                }
+            }
+        
         }
 
         public Passage GetPassage(PassageID id)

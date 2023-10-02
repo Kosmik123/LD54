@@ -607,8 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9710ff6abb96e49994b172dd94bf02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  synchronizedTransform: {fileID: 11400000, guid: 2a25ae2b97e2ba242ba6f90aea932a4c,
-    type: 2}
+  synchronizedTransform: {fileID: 0}
 --- !u!114 &4679714119229932760
 MonoBehaviour:
   m_ObjectHideFlags: 0

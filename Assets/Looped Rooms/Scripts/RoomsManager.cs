@@ -68,8 +68,16 @@ namespace Bipolar.LoopedRooms
         {
             foreach (var doorPair in settings.PassageMappings)
             {
-                passagesMappings.Add(doorPair.Passage1, doorPair.Passage2);
-                passagesMappings.Add(doorPair.Passage2, doorPair.Passage1);
+                if (doorPair.Passage1 == doorPair.Passage2)
+                {
+                    passagesMappings.Add(doorPair.Passage1, doorPair.Passage2);
+                    Debug.Log($"Passage {doorPair.Passage1.name} is self-passing");
+                }
+                else
+                {
+                    passagesMappings.Add(doorPair.Passage1, doorPair.Passage2);
+                    passagesMappings.Add(doorPair.Passage2, doorPair.Passage1);
+                }
             }
 
             foreach (var roomPrototype in settings.AllRoomsPrototypes)

@@ -120,7 +120,7 @@ public class DeathSequence : MonoBehaviour
             if (respawnRoom.GetComponentInChildren<Angel>() == null)
             {
                 angel.SynchronizedTransformController.SynchronizedTransform.LocalPosition = Vector3.zero;
-                angel.SynchronizedTransformController.SynchronizedTransform.LocalRotation = Quaternion.AngleAxis(Random.Range(-180, 180), Vector3.up);
+                angel.SynchronizedTransformController.SynchronizedTransform.LocalRotation = Quaternion.identity;
                 roomsManager.TeleportToRoom(respawnRoom);
                 break;
             }

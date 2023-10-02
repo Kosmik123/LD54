@@ -190,7 +190,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &307333020
 GameObject:
@@ -287,7 +287,7 @@ RectTransform:
   m_Children:
   - {fileID: 2027906628}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -550,6 +550,7 @@ GameObject:
   - component: {fileID: 492548520}
   - component: {fileID: 492548521}
   - component: {fileID: 492548522}
+  - component: {fileID: 492548523}
   m_Layer: 0
   m_Name: Rooms Dungeon
   m_TagString: Untagged
@@ -613,8 +614,7 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: 49750f8e9478ae247bf59cffbb29e231, type: 2}
   roomsSpawner: {fileID: 492548519}
   startingRoomPrefabs:
-  - {fileID: 6849834324178107156, guid: 3a1184207bd07c04aad1f0bac64a3a33, type: 3}
-  - {fileID: 6849834324178107156, guid: 6c484302be78c234291296dff3f76087, type: 3}
+  - {fileID: 3473211434462073182, guid: 6f45bd7e62bfb4748bea28efef0baae4, type: 3}
   observer: {fileID: 2019130049}
   currentRoom: {fileID: 0}
   nearestNeighbour: {fileID: 0}
@@ -675,30 +675,13 @@ MonoBehaviour:
   yellowKeys: 0
   redKeys: 0
   greenKeys: 0
---- !u!1 &757332840
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 757332842}
-  - component: {fileID: 757332841}
-  m_Layer: 0
-  m_Name: Randomizer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &757332841
+--- !u!114 &492548523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757332840}
+  m_GameObject: {fileID: 492548514}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c2ea9913901c88408c88789fddebd7c, type: 3}
@@ -707,21 +690,12 @@ MonoBehaviour:
   rooms:
   - {fileID: 3473211434462073182, guid: 9c269d172bf5a9e43bcad6cee1a44f3d, type: 3}
   - {fileID: 3473211434462073182, guid: 19e4ee7ec716cab4a804dcc58fce2272, type: 3}
---- !u!4 &757332842
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757332840}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  - {fileID: 3473211434462073182, guid: 754f4bcbe5b71f54892c580e8ff0323e, type: 3}
+  - {fileID: 3473211434462073182, guid: 9c7bdced6210e3147a7ebd5c0a2bce2c, type: 3}
+  - {fileID: 3473211434462073182, guid: c6d3c8aff58748647a3da3097c454f3f, type: 3}
+  - {fileID: 3473211434462073182, guid: c3e2565b7eaa5f54ba3fe8a8c994745b, type: 3}
+  - {fileID: 3473211434462073182, guid: 94b40c93f2ab26340856c85338ce38fa, type: 3}
+  - {fileID: 3473211434462073182, guid: 49093a4b2b3893641a302aa82980c4b1, type: 3}
 --- !u!1 &814710155
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +743,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:

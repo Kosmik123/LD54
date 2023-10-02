@@ -23,6 +23,12 @@ MonoBehaviour:
   - {fileID: 3473211434462073182, guid: 9a31f57a22549c2439b89b8d55fa7c0b, type: 3}
   - {fileID: 3473211434462073182, guid: 6f45bd7e62bfb4748bea28efef0baae4, type: 3}
   - {fileID: 3473211434462073182, guid: 9c7bdced6210e3147a7ebd5c0a2bce2c, type: 3}
+  - {fileID: 3473211434462073182, guid: c6d3c8aff58748647a3da3097c454f3f, type: 3}
+  - {fileID: 3473211434462073182, guid: c3e2565b7eaa5f54ba3fe8a8c994745b, type: 3}
+  - {fileID: 3473211434462073182, guid: 94b40c93f2ab26340856c85338ce38fa, type: 3}
+  - {fileID: 3473211434462073182, guid: 49093a4b2b3893641a302aa82980c4b1, type: 3}
+  - {fileID: 3473211434462073182, guid: b587aef8460f49a4ba5891826797b9f3, type: 3}
+  - {fileID: 3473211434462073182, guid: fd77f5fb748856f4b828b12bac695074, type: 3}
   passageMappings:
   - <Passage1>k__BackingField: {fileID: 11400000, guid: 11ed0bb749b169a47b5750b89341da94,
       type: 2}
@@ -80,17 +86,48 @@ MonoBehaviour:
       type: 2}
     <Passage2>k__BackingField: {fileID: 11400000, guid: 4b411ed50f1f0144e89f0c2ba364f28c,
       type: 2}
-  - <Passage1>k__BackingField: {fileID: 11400000, guid: 615d3eeab96ed0d4aa426cd3a8726b66,
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 54c6a4da306f2bd4d8aa2a82e486da3a,
       type: 2}
-    <Passage2>k__BackingField: {fileID: 11400000, guid: 36322add1855098479c2695fce128cbc,
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 79561690899dbfe4d8d98dcacb13bb37,
       type: 2}
   - <Passage1>k__BackingField: {fileID: 11400000, guid: b234ab714c4560b408d89261b75396d9,
       type: 2}
     <Passage2>k__BackingField: {fileID: 11400000, guid: c7e839048b6023049a8596f7dadcc89c,
       type: 2}
-  additionalMappings:
-  - <Room>k__BackingField: {fileID: 3473211434462073182, guid: 6f45bd7e62bfb4748bea28efef0baae4,
-      type: 3}
-    passages:
-    - {fileID: 11400000, guid: b234ab714c4560b408d89261b75396d9, type: 2}
-    - {fileID: 11400000, guid: 54c6a4da306f2bd4d8aa2a82e486da3a, type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 8615b17b85a2430498f18de3274dbf92,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: f1b55035b3dce664e874299ce14b2a82,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: aec3ad747ca180546a0b3a85b6f72ea3,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: d371c0d99bc5f914e8bf0b4a331bab20,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 33807bf1a86616b47b98285289424280,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: f2b1aaa3e9bd19a4494c2ee6b15a129d,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 85cf1bd733c3d3f46a92923565138416,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 7b0fb857f4eeb844ba976cea7bd3cb6f,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 44d88db9503d93040aee2f445def8314,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: caca4b7099fcaba4f84a110057843be1,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 2752a46b19cbd094baa20752c6c4dd80,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 2752a46b19cbd094baa20752c6c4dd80,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 3504d88a7e2a692488e9fd2534b316c6,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 119fa5f57c492424baad80f9fe28b706,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: e156e574cf8782e41b46c65ceb9eda9c,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: ba510adcf6a55dd47ba1b2a7e8d5e55a,
+      type: 2}
+  - <Passage1>k__BackingField: {fileID: 11400000, guid: 7d16098703966644fb3e0bc25ca5141b,
+      type: 2}
+    <Passage2>k__BackingField: {fileID: 11400000, guid: 0d77fa4f44b48944bbed5f66a99ac354,
+      type: 2}
+  additionalMappings: []
