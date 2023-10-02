@@ -614,7 +614,8 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: 49750f8e9478ae247bf59cffbb29e231, type: 2}
   roomsSpawner: {fileID: 492548519}
   startingRoomPrefabs:
-  - {fileID: 3473211434462073182, guid: 6f45bd7e62bfb4748bea28efef0baae4, type: 3}
+  - {fileID: 6849834324178107156, guid: 3a1184207bd07c04aad1f0bac64a3a33, type: 3}
+  - {fileID: 6849834324178107156, guid: 6c484302be78c234291296dff3f76087, type: 3}
   observer: {fileID: 2019130049}
   currentRoom: {fileID: 0}
   nearestNeighbour: {fileID: 0}
@@ -909,7 +910,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247316223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1296,7 +1297,7 @@ PrefabInstance:
     - target: {fileID: 5953817508556908845, guid: aa3e0fd298e93034d98b56a242db8dc5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5953817508556908845, guid: aa3e0fd298e93034d98b56a242db8dc5,
         type: 3}
@@ -1333,5 +1334,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5953817508556908841, guid: aa3e0fd298e93034d98b56a242db8dc5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aa3e0fd298e93034d98b56a242db8dc5, type: 3}

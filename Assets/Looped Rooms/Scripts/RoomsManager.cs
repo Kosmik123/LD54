@@ -88,10 +88,12 @@ namespace Bipolar.LoopedRooms
             foreach (var additionalMapping in settings.AdditionalMappings)
                 foreach (var passageID in additionalMapping.Passages)
                     AddPassageToRoomMapping(additionalMapping.Room, passageID);
+
         }
 
         public void AddPassageToRoomMapping(Room roomPrototype, PassageID passageID)
         {
+            int p = 0;
             if (roomPrototypesByPassageID.ContainsKey(passageID))
             {
                 Debug.LogError($"{roomPrototype.name} contains already existing passage {passageID.name}");
@@ -100,6 +102,7 @@ namespace Bipolar.LoopedRooms
             {
                 roomPrototypesByPassageID.Add(passageID, roomPrototype);
             }
+            p++;
         }
 
         private void LoadMissingNeighbours(Room room)

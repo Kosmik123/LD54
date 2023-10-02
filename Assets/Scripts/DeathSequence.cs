@@ -8,7 +8,7 @@ using UnityEngine.Rendering.Universal;
 public class DeathSequence : MonoBehaviour
 {
     [SerializeField]
-    private Movement playerMovement;
+    private MonoBehaviour[] playerMovements;
     [SerializeField]
     private Light playersTorchLight;
 
@@ -86,7 +86,8 @@ public class DeathSequence : MonoBehaviour
 
     private IEnumerator DeathSequenceCo(Angel angel)
     {
-        playerMovement.enabled = false;
+        foreach (var m in playerMovements)
+            m.enabled = false;
         deathSoundAudioSource.volume = 1;
         deathSoundAudioSource.Play();
 
@@ -157,7 +158,8 @@ public class DeathSequence : MonoBehaviour
         }
 
         deathSoundAudioSource.Stop();
-        playerMovement.enabled = true;
+        foreach (var m in playerMovements)
+            m.enabled = true;
         currentSequence = null;
     }
 
