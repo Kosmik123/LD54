@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 3473211434462073182, guid: 754f4bcbe5b71f54892c580e8ff0323e, type: 3}
   - {fileID: 3473211434462073182, guid: 9a31f57a22549c2439b89b8d55fa7c0b, type: 3}
   - {fileID: 3473211434462073182, guid: 6f45bd7e62bfb4748bea28efef0baae4, type: 3}
+  - {fileID: 3473211434462073182, guid: 9c7bdced6210e3147a7ebd5c0a2bce2c, type: 3}
   passageMappings:
   - <Passage1>k__BackingField: {fileID: 11400000, guid: 11ed0bb749b169a47b5750b89341da94,
       type: 2}

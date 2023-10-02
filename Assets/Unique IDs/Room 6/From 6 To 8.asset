@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b73d9187af89b74e9650dcb50b071e7, type: 3}
-  m_Name: From 6 To Unknown
+  m_Name: From 6 To 8
   m_EditorClassIdentifier: 
   guidBytes: 0882855764d4fe43ad988a6be13de64d
   guid: 57858208-d464-43fe-ad98-8a6be13de64d
