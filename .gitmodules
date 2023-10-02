@@ -4,3 +4,6 @@
 [submodule "Assets/Raycast System"]
 	path = Assets/Raycast System
 	url = https://github.com/Kosmik123/Raycast-System
+[submodule "Assets/Humanoid3D"]
+	path = Assets/Humanoid3D
+	url = https://github.com/Kosmik123/Humanoid3D.git
