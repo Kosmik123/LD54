@@ -76,5 +76,12 @@ namespace Bipolar.LoopedRooms
         {
             sceneTransforms.Remove(transform);
         }
+
+        public void SetRotationY(float y)
+        {
+            var euler = LocalRotation.eulerAngles;
+            euler.y = y;
+            LocalRotation = Quaternion.Euler(euler);
+        }
     } 
 }

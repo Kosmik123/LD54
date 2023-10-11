@@ -14,5 +14,10 @@ namespace Bipolar.LoopedRooms
                 id = value;
             }
         }
+
+        public override string ToString()
+        {
+            return id.name;
+        }
     }
 }

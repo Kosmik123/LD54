@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.1
+    NearClipPlane: 0.01
     FarClipPlane: 100
     Dutch: 0
     ModeOverride: 0
@@ -235,7 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6523457921869c64e9aa125dce1b861b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovements: []
+  playerMovements:
+  - {fileID: 7889068952118076557}
+  - {fileID: 7042928565725477397}
   playersTorchLight: {fileID: 0}
   lookAtAngelTransitionDuration: 1
   deathSoundAudioSource: {fileID: 5953817508556908843}
@@ -473,8 +475,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.2
   m_Radius: 0.2
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 1
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
@@ -527,8 +529,8 @@ MonoBehaviour:
   moveSpeed: 4
   moveInputProvider: {fileID: 4293141564285332914}
   speedModifiers: []
-  sideModifier: 1
-  backModifier: 1
+  sideModifier: 0.8
+  backModifier: 0.6
   currentSpeed: 0
 --- !u!114 &4293141564285332914
 MonoBehaviour:
@@ -601,7 +603,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.1
+    NearClipPlane: 0.01
     FarClipPlane: 100
     Dutch: -90
     ModeOverride: 0

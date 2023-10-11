@@ -117,7 +117,7 @@ namespace Bipolar.LoopedRooms
                 if (passage == null)
                     continue;
 
-                if (room.connections.ContainsKey(passage))
+                if (room.Connections.ContainsKey(passage))
                     continue;
 
                 roomsBehindPassagesToLoad.Add(new Room.Connection(passage, room));
@@ -129,8 +129,8 @@ namespace Bipolar.LoopedRooms
             var neighbour = CreateRoomBehindDoor(passage);
             activeRooms.Add(neighbour.room);
 
-            room.connections[passage] = new Room.Connection(neighbour.passage, neighbour.room);
-            neighbour.room.connections[neighbour.passage] = new Room.Connection(passage, room);
+            room.Connections[passage] = new Room.Connection(neighbour.passage, neighbour.room);
+            neighbour.room.Connections[neighbour.passage] = new Room.Connection(passage, room);
         }
 
         private Room.Connection CreateRoomBehindDoor(Passage passage)
@@ -177,7 +177,7 @@ namespace Bipolar.LoopedRooms
             currentRoom.Exit();
             var previousRoom = currentRoom;
 
-            foreach (var connection in previousRoom.connections)
+            foreach (var connection in previousRoom.Connections)
             {
                 var room = connection.Value.room;
                 if (room == nearestRoom)
@@ -205,7 +205,7 @@ namespace Bipolar.LoopedRooms
             
             if (nearestNeighbour != null && nearestNeighbour != currentRoom)
             {
-                foreach (var connection in nearestNeighbour.connections.Values)
+                foreach (var connection in nearestNeighbour.Connections.Values)
                 {
                     if (connection.room == currentRoom)
                         continue;
@@ -218,7 +218,7 @@ namespace Bipolar.LoopedRooms
 
             nearestNeighbour = activeRooms[1];
 
-            var connectionToCurrentRoom = nearestNeighbour.connections.First(kvp => kvp.Value.room == currentRoom);
+            var connectionToCurrentRoom = nearestNeighbour.Connections.First(kvp => kvp.Value.room == currentRoom);
             var oppositeDoors = nearestNeighbour.GetOppositePassages(connectionToCurrentRoom.Key);
 
             LoadNeighbours(nearestNeighbour, oppositeDoors);
@@ -233,12 +233,12 @@ namespace Bipolar.LoopedRooms
 
         private void DeleteAllConnectionsExceptOne(Room room, Room exception)
         {
-            var passage = room.connections.FirstOrDefault(kvp => kvp.Value.room == exception).Key;
+            var passage = room.Connections.FirstOrDefault(kvp => kvp.Value.room == exception).Key;
             if (passage == null)
                 Debug.LogError("BRAK POŁĄCZEŃ?");
-            var exceptionConnection = room.connections[passage];
-            room.connections.Clear();
-            room.connections.Add(passage, exceptionConnection);
+            var exceptionConnection = room.Connections[passage];
+            room.Connections.Clear();
+            room.Connections.Add(passage, exceptionConnection);
         }
     }
 }

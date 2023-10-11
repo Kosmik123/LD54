@@ -41,7 +41,7 @@ namespace Bipolar.LoopedRooms
         }
 
         private readonly Dictionary<PassageID, Passage> passagesByID = new Dictionary<PassageID, Passage>();
-        public readonly Dictionary<Passage, Connection> connections = new Dictionary<Passage, Connection>();
+        public Dictionary<Passage, Connection> Connections { get; } = new Dictionary<Passage, Connection>();
 
         public void Init(Room prototype)
         {
@@ -51,7 +51,7 @@ namespace Bipolar.LoopedRooms
 
         private void PopulatePassages()
         {
-            connections.Clear();
+            Connections.Clear();
             passages = new Passage[6];
             for (int i = 0; i < wallsPositions.Length; i++)
                 passages[i] = wallsPositions[i].GetComponentInChildren<Passage>();
@@ -104,6 +104,11 @@ namespace Bipolar.LoopedRooms
         public void Exit()
         {
             OnRoomExited?.Invoke();
+        }
+
+        public override string ToString()
+        {
+            return gameObject.name;
         }
     }
 }

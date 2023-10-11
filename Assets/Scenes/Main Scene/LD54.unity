@@ -697,6 +697,101 @@ MonoBehaviour:
   - {fileID: 3473211434462073182, guid: c3e2565b7eaa5f54ba3fe8a8c994745b, type: 3}
   - {fileID: 3473211434462073182, guid: 94b40c93f2ab26340856c85338ce38fa, type: 3}
   - {fileID: 3473211434462073182, guid: 49093a4b2b3893641a302aa82980c4b1, type: 3}
+--- !u!1 &685273535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685273537}
+  - component: {fileID: 685273536}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &685273536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685273535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af9d79e928832143a2309370290cb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c08f28bfcc8ff144c8ab4923f93f85d3, type: 2}
+        m_TargetAssemblyTypeName: Bipolar.LoopedRooms.SynchronizedTransform, LoopedRooms
+        m_MethodName: SetRotationY
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 180
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 1829548333f586f489e704f6eb6934ca, type: 2}
+        m_TargetAssemblyTypeName: Bipolar.LoopedRooms.SynchronizedTransform, LoopedRooms
+        m_MethodName: SetRotationY
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 180
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: f659b9af5a82b1f47a349b4492a1f7a6, type: 2}
+        m_TargetAssemblyTypeName: Bipolar.LoopedRooms.SynchronizedGameObject, LoopedRooms
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2d9143f74233d444ab6a717341aac1db, type: 2}
+        m_TargetAssemblyTypeName: Bipolar.LoopedRooms.SynchronizedGameObject, LoopedRooms
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!4 &685273537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685273535}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &814710155
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +890,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1187903813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5953817508556908844, guid: aa3e0fd298e93034d98b56a242db8dc5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953817508964226028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1247316223
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +983,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 100
   field of view: 60
   orthographic: 0
@@ -1117,6 +1218,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5953817508964226028}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2019130059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187903813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb4f30b80a9a964390c595f08ae4214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2027906627
 GameObject:
   m_ObjectHideFlags: 0

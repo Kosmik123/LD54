@@ -33,7 +33,7 @@ namespace Bipolar.LoopedRooms
         public void Release (Room room)
         {
             var pool = poolByPrototypes[room.Prototype];
-            room.connections.Clear();
+            room.Connections.Clear();
             room.gameObject.SetActive(false);
             pool.Release(room); 
         }
