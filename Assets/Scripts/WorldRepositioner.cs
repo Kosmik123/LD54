@@ -8,9 +8,13 @@ public class WorldRepositioner : MonoBehaviour
     [SerializeField]
     private float limitDistance;
 
+    private bool oldAutoSyncTransforms;
+
     private void Update()
     {
-        if (observer.position.sqrMagnitude > limitDistance * limitDistance)
+        Vector3 observerHorizontalPosition = observer.position;
+        observerHorizontalPosition.y = 0f;
+        if (observerHorizontalPosition.sqrMagnitude > limitDistance * limitDistance)
         {
             ShiftWorld();
             enabled = false;
@@ -21,14 +25,20 @@ public class WorldRepositioner : MonoBehaviour
     private void Reenable()
     {
         enabled = true;
+        Physics.autoSyncTransforms = oldAutoSyncTransforms;
     }
 
     private void ShiftWorld()
     {
+        oldAutoSyncTransforms = Physics.autoSyncTransforms;
+        Physics.autoSyncTransforms = true;
         Vector3 shift = -observer.position;
+        //shift.y = 0;
         for (int i = 0; i < transform.childCount; i++) 
             transform.GetChild(i).position += shift;
-        
+
+        //observer.position += shift;
         observer.position = Vector3.zero;
+        Physics.SyncTransforms();
     }
 }
