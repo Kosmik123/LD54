@@ -533,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f364746c0229f7643a4f757e94a471ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetFrameRate: 0
 --- !u!1 &492548514
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +726,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af9d79e928832143a2309370290cb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &685273537
 Transform:
   m_ObjectHideFlags: 0
@@ -1009,7 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 0
+  m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
