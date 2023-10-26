@@ -1,10 +1,9 @@
 using Bipolar.LoopedRooms;
 using Cinemachine;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering.HighDefinition;
 
 public class DeathSequence : MonoBehaviour
 {
@@ -64,15 +63,19 @@ public class DeathSequence : MonoBehaviour
 
     private void Awake()
     {
-        postprocessingProfile.TryGet(out vignetteEffect);
-        postprocessingProfile.TryGet(out colorAdjustments);
+        if (vignetteEffect)
+            postprocessingProfile.TryGet(out vignetteEffect);
+        if (colorAdjustments)
+            postprocessingProfile.TryGet(out colorAdjustments);
         SetDefaultPostprocessing();
     }
 
     private void SetDefaultPostprocessing()
     {
-        colorAdjustments.postExposure.value = screenExposureFadeInCurve.Evaluate(1);
-        vignetteEffect.intensity.value = vignetteIntensityFadeInCurve.Evaluate(1);
+        if (colorAdjustments)
+            colorAdjustments.postExposure.value = screenExposureFadeInCurve.Evaluate(1);
+        if (vignetteEffect)
+            vignetteEffect.intensity.value = vignetteIntensityFadeInCurve.Evaluate(1);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -103,8 +106,10 @@ public class DeathSequence : MonoBehaviour
         while (progress < 1.1f)
         {
             progress += fadeSpeed * Time.deltaTime;
-            colorAdjustments.postExposure.value = screenExposureFadeOutCurve.Evaluate(progress);
-            vignetteEffect.intensity.value = vignetteIntensityFadeOutCurve.Evaluate(progress);
+            if (colorAdjustments)
+                colorAdjustments.postExposure.value = screenExposureFadeOutCurve.Evaluate(progress);
+            if (vignetteEffect) 
+                vignetteEffect.intensity.value = vignetteIntensityFadeOutCurve.Evaluate(progress);
             yield return null;
         }
 
@@ -138,8 +143,10 @@ public class DeathSequence : MonoBehaviour
         while (progress < 1.1f)
         {
             progress += fadeSpeed * Time.deltaTime;
-            colorAdjustments.postExposure.value = screenExposureFadeInCurve.Evaluate(progress);
-            vignetteEffect.intensity.value = vignetteIntensityFadeInCurve.Evaluate(progress);
+            if (colorAdjustments)
+                colorAdjustments.postExposure.value = screenExposureFadeInCurve.Evaluate(progress);
+            if (vignetteEffect)
+                vignetteEffect.intensity.value = vignetteIntensityFadeInCurve.Evaluate(progress);
             yield return null;
         }
         var standUpDelayWait = new WaitForSeconds(standUpDelay);
@@ -168,5 +175,4 @@ public class DeathSequence : MonoBehaviour
     {
         SetDefaultPostprocessing();
     }
-
 }
